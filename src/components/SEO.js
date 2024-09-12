@@ -95,11 +95,12 @@ class SEO extends React.Component {
 			{doNotCrawl && <meta name="googlebot" content="noindex"/>}
 
 			{/* Termly Cookie Consent */}
+{/*
 			<script
 				type="text/javascript"
 				src="https://app.termly.io/embed.min.js"
 				data-website-uuid={process.env.TERMLY_COOKIE_CONSENT}
-			></script>
+			></script> /*}
 
 			{/* Global site tag (gtag.js) - Google Analytics */}
 			{/* <script async src="https://www.googletagmanager.com/gtag/js?id=${G-E7KS17RLEB}"></script>
