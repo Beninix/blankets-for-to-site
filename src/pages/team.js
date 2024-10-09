@@ -73,7 +73,7 @@ export const teamPositionQuery = graphql`query TeamQuery {
       title
     }
   }
-  allContentfulHeaderImage(filter: {pageName: {eq: "Blog"}}, limit: 1) {
+  allContentfulHeaderImage(filter: {pageName: {eq: "Team"}}, limit: 1) {
     nodes {
       image {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
