@@ -13,20 +13,19 @@ import * as styles from '../page-styles/team.module.css'
 class Team extends React.Component {
 
   render() {
-    // const members = get(this, 'props.data.allContentfulExecutive.edges')
-
+    const members = get(this, 'props.data.allContentfulExecutive.edges')
+    
     const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
     const headerSubtitle = ''
     const headerTitle = 'Team'
-
-    // const teamOrder = ['Founders', 'Co-Presidents', 'Marketing Team', 'External Team', 'Internal Team']
-    // let teams = [] 
-    // teamOrder.forEach((key) => {
-    //   teams.push({
-    //     title: key,
-    //     members: members.filter(member => member.node.team === key)
-    //   })
-    // })
+    const teamOrder = ['Co-Presidents', 'Marketing Team', 'External Team', 'Internal Team']
+    let teams = [] 
+    teamOrder.forEach((key) => {
+      teams.push({
+        title: key,
+        members: members.filter(member => member.node.team === key)
+      })
+    })
 
     return (
       <Layout location={this.props.location}>
@@ -37,9 +36,7 @@ class Team extends React.Component {
         <div className="white-background">
           <HeaderImage imgFluid={imgFluid} headerTitle={headerTitle} headerSubtitle={headerSubtitle} />
           <div className="wrapper">
-            <h2 className={styles.teamTitle}>Under Construction</h2>
-            <p>This page is currently under construction in preparation for the 2024-2025 year. Check back here soon!</p>
-              {/* {
+          {
                 teams.map((team) => {
                   return(
                     <div>
@@ -49,7 +46,7 @@ class Team extends React.Component {
                           team.members.map(({ node }) => {
                             return (
                               node.name !== 'John Doe' ?
-                                <Animation fade left animationDelay={200} animationDuration={350} key={node.name} style={{ justifyContent: 'flex-start' }}>
+                                <Animation fade left animationDelay={200} animationDuration={350} key={node.name} style={{ justifyContent: 'flex-start'}}>
                                   <Member data={node} />
                                 </Animation> :
                                 null
@@ -60,7 +57,7 @@ class Team extends React.Component {
                     </div>
                   )
                 })
-              } */}
+              }
           </div>
         </div>
       </Layout>
@@ -80,6 +77,26 @@ export const teamPositionQuery = graphql`query TeamQuery {
     nodes {
       image {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 100)
+      }
+    }
+  }
+  allContentfulExecutive(sort: [{isFounder: DESC}, {name: ASC}]) {
+    edges {
+      node {
+        name
+        isFounder
+        title
+        email
+        team
+        facebookLink
+        instagramLink
+        twitterLink
+        linkedInLink
+        websiteLink
+        githubLink
+        photo {
+          gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED, quality: 50)
+        }
       }
     }
   }
