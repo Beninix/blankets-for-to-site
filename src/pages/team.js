@@ -18,7 +18,7 @@ class Team extends React.Component {
     const imgFluid = get(this, 'props.data.allContentfulHeaderImage.nodes[0].image.gatsbyImageData')
     const headerSubtitle = ''
     const headerTitle = 'Team'
-    const teamOrder = ['Co-Presidents', 'Marketing Team', 'External Team', 'Internal Team']
+    const teamOrder = ['Co-Presidents', 'Marketing Team', 'Donations Team', 'Events Team', 'Operations Team', 'Founders']
     let teams = [] 
     teamOrder.forEach((key) => {
       teams.push({
